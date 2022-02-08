@@ -1,0 +1,28 @@
+{
+  "applications": ["admpoc"],
+  "changelogDate": "20220208103203",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "port",
+  "fields": [
+    {
+      "fieldName": "lodingTime",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "unloadingTime",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "waitingTime",
+      "fieldType": "Float"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Port",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}
