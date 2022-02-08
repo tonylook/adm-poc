@@ -1,0 +1,41 @@
+{
+  "applications": ["admpoc"],
+  "changelogDate": "20220208093340",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "port",
+  "fields": [
+    {
+      "fieldName": "lodingTime",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "unloadingTime",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "waitingTime",
+      "fieldType": "Float"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Port",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "purchaseContract",
+      "otherEntityRelationshipName": "port",
+      "relationshipName": "purchaseContract",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "saleContract",
+      "otherEntityRelationshipName": "port",
+      "relationshipName": "saleContract",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Alert, Table, Button } from 'reactstrap';
+import { Translate } from 'react-jhipster';
 
 import { getSession } from 'app/shared/reducers/authentication';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
@@ -30,20 +31,26 @@ export const SessionsPage = () => {
   return (
     <div>
       <h2>
-        Active sessions for [<strong>{account.login}</strong>]
+        <Translate contentKey="sessions.title" interpolate={{ username: account.login }}>
+          Active sessions for [<strong>{account.login}</strong>]
+        </Translate>
       </h2>
 
       {updateSuccess ? (
         <Alert color="success">
-          <strong>Session invalidated!</strong>
+          <Translate contentKey="sessions.messages.success">
+            <strong>Session invalidated!</strong>
+          </Translate>
         </Alert>
       ) : null}
 
       {updateFailure ? (
         <Alert color="danger">
-          <span>
-            <strong>An error has occurred!</strong> The session could not be invalidated.
-          </span>
+          <Translate contentKey="sessions.messages.error">
+            <span>
+              <strong>An error has occurred!</strong> The session could not be invalidated.
+            </span>
+          </Translate>
         </Alert>
       ) : null}
 
@@ -55,9 +62,15 @@ export const SessionsPage = () => {
         <Table className="table-striped">
           <thead>
             <tr>
-              <th>IP Address</th>
-              <th>User agent</th>
-              <th>Date</th>
+              <th>
+                <Translate contentKey="sessions.table.ipaddress">IP Address</Translate>
+              </th>
+              <th>
+                <Translate contentKey="sessions.table.useragent">User agent</Translate>
+              </th>
+              <th>
+                <Translate contentKey="sessions.table.date">Date</Translate>
+              </th>
               <th />
             </tr>
           </thead>
@@ -70,7 +83,7 @@ export const SessionsPage = () => {
                 <td>{s.tokenDate}</td>
                 <td>
                   <Button color="primary" onClick={doSessionInvalidation(s.series)}>
-                    Invalidate
+                    <Translate contentKey="sessions.table.button">Invalidate</Translate>
                   </Button>
                 </td>
               </tr>
