@@ -4,6 +4,7 @@ import ch.orange.domain.enumeration.Quality;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
+import javax.validation.constraints.*;
 
 /**
  * A DTO for the {@link ch.orange.domain.PurchaseContract} entity.

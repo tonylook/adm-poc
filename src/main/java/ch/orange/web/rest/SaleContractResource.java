@@ -9,6 +9,8 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -48,7 +50,8 @@ public class SaleContractResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/sale-contracts")
-    public ResponseEntity<SaleContractDTO> createSaleContract(@RequestBody SaleContractDTO saleContractDTO) throws URISyntaxException {
+    public ResponseEntity<SaleContractDTO> createSaleContract(@Valid @RequestBody SaleContractDTO saleContractDTO)
+        throws URISyntaxException {
         log.debug("REST request to save SaleContract : {}", saleContractDTO);
         if (saleContractDTO.getId() != null) {
             throw new BadRequestAlertException("A new saleContract cannot already have an ID", ENTITY_NAME, "idexists");
@@ -73,7 +76,7 @@ public class SaleContractResource {
     @PutMapping("/sale-contracts/{id}")
     public ResponseEntity<SaleContractDTO> updateSaleContract(
         @PathVariable(value = "id", required = false) final Long id,
-        @RequestBody SaleContractDTO saleContractDTO
+        @Valid @RequestBody SaleContractDTO saleContractDTO
     ) throws URISyntaxException {
         log.debug("REST request to update SaleContract : {}, {}", id, saleContractDTO);
         if (saleContractDTO.getId() == null) {
@@ -108,7 +111,7 @@ public class SaleContractResource {
     @PatchMapping(value = "/sale-contracts/{id}", consumes = { "application/json", "application/merge-patch+json" })
     public ResponseEntity<SaleContractDTO> partialUpdateSaleContract(
         @PathVariable(value = "id", required = false) final Long id,
-        @RequestBody SaleContractDTO saleContractDTO
+        @NotNull @RequestBody SaleContractDTO saleContractDTO
     ) throws URISyntaxException {
         log.debug("REST request to partial update SaleContract partially : {}, {}", id, saleContractDTO);
         if (saleContractDTO.getId() == null) {

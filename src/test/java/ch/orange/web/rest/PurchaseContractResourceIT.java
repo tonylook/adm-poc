@@ -8,6 +8,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import ch.orange.IntegrationTest;
+import ch.orange.domain.Port;
 import ch.orange.domain.PurchaseContract;
 import ch.orange.domain.enumeration.Quality;
 import ch.orange.repository.PurchaseContractRepository;
@@ -83,6 +84,16 @@ class PurchaseContractResourceIT {
             .price(DEFAULT_PRICE)
             .volume(DEFAULT_VOLUME)
             .status(DEFAULT_STATUS);
+        // Add required entity
+        Port port;
+        if (TestUtil.findAll(em, Port.class).isEmpty()) {
+            port = PortResourceIT.createEntity(em);
+            em.persist(port);
+            em.flush();
+        } else {
+            port = TestUtil.findAll(em, Port.class).get(0);
+        }
+        purchaseContract.setPort(port);
         return purchaseContract;
     }
 
@@ -99,6 +110,16 @@ class PurchaseContractResourceIT {
             .price(UPDATED_PRICE)
             .volume(UPDATED_VOLUME)
             .status(UPDATED_STATUS);
+        // Add required entity
+        Port port;
+        if (TestUtil.findAll(em, Port.class).isEmpty()) {
+            port = PortResourceIT.createUpdatedEntity(em);
+            em.persist(port);
+            em.flush();
+        } else {
+            port = TestUtil.findAll(em, Port.class).get(0);
+        }
+        purchaseContract.setPort(port);
         return purchaseContract;
     }
 

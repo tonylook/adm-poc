@@ -41,7 +41,8 @@
       "otherEntityName": "port",
       "otherEntityRelationshipName": "saleContract",
       "relationshipName": "port",
-      "relationshipType": "many-to-one"
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
     }
   ],
   "service": "serviceImpl"
