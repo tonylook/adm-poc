@@ -10,7 +10,8 @@ application {
     buildTool maven,
     authenticationType session,
     cacheProvider no,
-    enableTranslation false
+    enableTranslation true,
+    languages [en]
     }
   dto * with mapstruct
   service * with serviceImpl

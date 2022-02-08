@@ -1,5 +1,6 @@
 import { loadingBarReducer as loadingBar } from 'react-redux-loading-bar';
 
+import locale from './locale';
 import authentication from './authentication';
 import applicationProfile from './application-profile';
 
@@ -15,6 +16,7 @@ import sessions from 'app/modules/account/sessions/sessions.reducer';
 
 const rootReducer = {
   authentication,
+  locale,
   applicationProfile,
   administration,
   userManagement,
