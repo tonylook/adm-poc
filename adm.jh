@@ -48,6 +48,7 @@ holds Integer,
 holdCapacity Float,
 period Long,
 costPerDay BigDecimal
+
 }
 
 entity Port {
@@ -64,7 +65,7 @@ enum Quality {
 }
 
 relationship ManyToOne {
-  PurchaseContract{port} to Port
-  SaleContract{port} to Port
+  PurchaseContract{port required} to Port
+  SaleContract{port required} to Port
 }
     
