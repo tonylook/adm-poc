@@ -1,0 +1,10 @@
+{
+  "admpocApp": {
+    "Quality": {
+      "null": "",
+      "BAD": "bad",
+      "GOOD": "good",
+      "TOP": "top"
+    }
+  }
+}
