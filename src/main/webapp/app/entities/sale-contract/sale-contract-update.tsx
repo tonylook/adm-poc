@@ -147,6 +147,7 @@ export const SaleContractUpdate = (props: RouteComponentProps<{ id: string }>) =
                 data-cy="port"
                 label={translate('admpocApp.saleContract.port')}
                 type="select"
+                required
               >
                 <option value="" key="0" />
                 {ports
@@ -157,6 +158,9 @@ export const SaleContractUpdate = (props: RouteComponentProps<{ id: string }>) =
                     ))
                   : null}
               </ValidatedField>
+              <FormText>
+                <Translate contentKey="entity.validation.required">This field is required.</Translate>
+              </FormText>
               <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/sale-contract" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;

@@ -4,6 +4,7 @@ import ch.orange.domain.enumeration.Quality;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 /**
  * A SaleContract.
@@ -39,7 +40,8 @@ public class SaleContract implements Serializable {
     @Column(name = "status")
     private Boolean status;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
+    @NotNull
     private Port port;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

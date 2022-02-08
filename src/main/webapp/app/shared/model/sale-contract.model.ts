@@ -9,7 +9,7 @@ export interface ISaleContract {
   volume?: number | null;
   allowances?: number | null;
   status?: boolean | null;
-  port?: IPort | null;
+  port?: IPort;
 }
 
 export const defaultValue: Readonly<ISaleContract> = {

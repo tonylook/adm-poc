@@ -9,6 +9,8 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -51,7 +53,7 @@ public class PurchaseContractResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/purchase-contracts")
-    public ResponseEntity<PurchaseContractDTO> createPurchaseContract(@RequestBody PurchaseContractDTO purchaseContractDTO)
+    public ResponseEntity<PurchaseContractDTO> createPurchaseContract(@Valid @RequestBody PurchaseContractDTO purchaseContractDTO)
         throws URISyntaxException {
         log.debug("REST request to save PurchaseContract : {}", purchaseContractDTO);
         if (purchaseContractDTO.getId() != null) {
@@ -77,7 +79,7 @@ public class PurchaseContractResource {
     @PutMapping("/purchase-contracts/{id}")
     public ResponseEntity<PurchaseContractDTO> updatePurchaseContract(
         @PathVariable(value = "id", required = false) final Long id,
-        @RequestBody PurchaseContractDTO purchaseContractDTO
+        @Valid @RequestBody PurchaseContractDTO purchaseContractDTO
     ) throws URISyntaxException {
         log.debug("REST request to update PurchaseContract : {}, {}", id, purchaseContractDTO);
         if (purchaseContractDTO.getId() == null) {
@@ -112,7 +114,7 @@ public class PurchaseContractResource {
     @PatchMapping(value = "/purchase-contracts/{id}", consumes = { "application/json", "application/merge-patch+json" })
     public ResponseEntity<PurchaseContractDTO> partialUpdatePurchaseContract(
         @PathVariable(value = "id", required = false) final Long id,
-        @RequestBody PurchaseContractDTO purchaseContractDTO
+        @NotNull @RequestBody PurchaseContractDTO purchaseContractDTO
     ) throws URISyntaxException {
         log.debug("REST request to partial update PurchaseContract partially : {}, {}", id, purchaseContractDTO);
         if (purchaseContractDTO.getId() == null) {

@@ -8,7 +8,7 @@ export interface IPurchaseContract {
   price?: number | null;
   volume?: number | null;
   status?: boolean | null;
-  port?: IPort | null;
+  port?: IPort;
 }
 
 export const defaultValue: Readonly<IPurchaseContract> = {
